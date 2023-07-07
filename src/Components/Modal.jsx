@@ -6,7 +6,7 @@ function Modal() {
 		<StContainer>
 			<StHeader>Modal</StHeader>
 			<StModalGroup>
-				<StSmallBtn bgColor="rgb(85, 239, 196);" textColor="black">
+				<StSmallBtn backGroundColor="rgb(85, 239, 196);" textColor="black">
 					open modal
 				</StSmallBtn>
 				<StLargeBtn>open modal</StLargeBtn>
@@ -44,17 +44,25 @@ const StLargeBtn = styled.button`
 	font-weight: 600;
 	border-radius: 8px;
 	background-color: white;
-	border: 3px solid ${props => props.bdColor || 'rgb(250, 177, 160);'};
+	border: 3px solid ${props => props.borderColor || 'rgb(250, 177, 160);'};
 	color: ${props => props.textColor || '#d63031'};
 	cursor: pointer;
+	&:active {
+		background-color: #fab6ac;
+		position: relative;
+	}
 `;
 
 const StSmallBtn = styled.button`
 	border: none;
 	cursor: pointer;
 	border-radius: 8px;
-	background-color: ${props => props.bgColor || 'rgb(250, 177, 160);'};
+	background-color: ${props => props.backGroundColor || 'rgb(250, 177, 160);'};
 	color: ${props => props.textColor || '#d63031'};
 	height: 40px;
 	width: 100px;
+	&:active {
+		background-color: #1fafa3;
+		position: relative;
+	}
 `;
