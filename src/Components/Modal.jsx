@@ -1,7 +1,60 @@
 import React from 'react';
+import { styled } from 'styled-components';
 
 function Modal() {
-	return <div>Modal</div>;
+	return (
+		<StContainer>
+			<StHeader>Modal</StHeader>
+			<StModalGroup>
+				<StSmallBtn bgColor="rgb(85, 239, 196);" textColor="black">
+					open modal
+				</StSmallBtn>
+				<StLargeBtn>open modal</StLargeBtn>
+			</StModalGroup>
+		</StContainer>
+	);
 }
 
 export default Modal;
+
+const StModalGroup = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+`;
+
+const StContainer = styled.div`
+	margin: 10px;
+`;
+
+const StHeader = styled.div`
+	display: block;
+	font-size: 2em;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+`;
+
+const StLargeBtn = styled.button`
+	width: 200px;
+	height: 50px;
+	padding: 1px 6px;
+	font-weight: 600;
+	border-radius: 8px;
+	background-color: white;
+	border: 3px solid ${props => props.bdColor || 'rgb(250, 177, 160);'};
+	color: ${props => props.textColor || '#d63031'};
+	cursor: pointer;
+`;
+
+const StSmallBtn = styled.button`
+	border: none;
+	cursor: pointer;
+	border-radius: 8px;
+	background-color: ${props => props.bgColor || 'rgb(250, 177, 160);'};
+	color: ${props => props.textColor || '#d63031'};
+	height: 40px;
+	width: 100px;
+`;
