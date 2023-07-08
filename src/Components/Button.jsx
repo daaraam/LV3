@@ -2,32 +2,30 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 function Button() {
-	const greenLBtnClickHandler = borderColor => {
-		alert('click!');
-	};
-
-	const redLBtnClickHandler = () => {
-		const pop = prompt('어렵나요?', '네에..');
-	};
-
 	return (
 		<StContainer>
-			<StHeader>Button</StHeader>
+			<h1>Button</h1>
 			<StBtnGroup>
-				<StLargeGreenBtn onClick={greenLBtnClickHandler}>Large Primary Button ＞</StLargeGreenBtn>
-
-				<StMediumBtn backGroundColor="rgb(85, 239, 196)" textColor="black" clkColor="#1FAFA3">
+				<StBtn onClick={() => alert('클릭')} bgColor={'green'} type="large">
+					Large Primary Button ＞
+				</StBtn>
+				<StBtn bgColor={'green'} type="medium">
 					Medium
-				</StMediumBtn>
-
-				<StSmallBtn backGroundColor="rgb(85, 239, 196)" textColor="black" clkColor="#1FAFA3">
+				</StBtn>
+				<StBtn bgColor={'green'} type="small">
 					Small
-				</StSmallBtn>
+				</StBtn>
 			</StBtnGroup>
-			<StBtnGroup style={{ marginTop: '12px' }}>
-				<StLargeBtn onClick={redLBtnClickHandler}>Large Negative Button 🔔</StLargeBtn>
-				<StMediumBtn>Medium</StMediumBtn>
-				<StSmallBtn>Small</StSmallBtn>
+			<StBtnGroup>
+				<StBtn onClick={() => prompt('어렵나요', '네에..')} bgColor={'pink'} type="large">
+					Large Negative Button 🔔
+				</StBtn>
+				<StBtn bgColor={'pink'} type="medium">
+					Medium
+				</StBtn>
+				<StBtn bgColor={'pink'} type="small">
+					Small
+				</StBtn>
 			</StBtnGroup>
 		</StContainer>
 	);
@@ -38,79 +36,48 @@ export default Button;
 const StContainer = styled.div`
 	margin: 10px;
 `;
+
 const StBtnGroup = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+	margin: 10px;
 `;
 
-const StHeader = styled.div`
-	display: block;
-	font-size: 2em;
-	margin-block-start: 0.67em;
-	margin-block-end: 0.67em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
-`;
-
-const StLargeBtn = styled.button`
-	width: 200px;
-	height: 50px;
-	padding: 1px 6px;
+export const StBtn = styled.button`
+	box-sizing: border-box;
+	border: none;
 	font-weight: 600;
 	border-radius: 8px;
-	background-color: white;
-	border: 3px solid ${props => props.borderColor || 'rgb(250, 177, 160)'};
-	color: ${props => props.textColor || '#d63031'};
 	cursor: pointer;
 	&:active {
-		background-color: ${props => props.clkColor || '#FAB6AC'};
-		position: relative;
+		filter: brightness(70%);
 	}
+	/* ${props => colorHandler(props.bgColor)}; 비구조분해할당 밑에는구조분해할당이랍니다*/
+
+	${({ bgColor }) => colorHandler(bgColor)};
+	${({ type }) => sizeHandler(type)};
 `;
 
-const StLargeGreenBtn = styled.button`
-	width: 200px;
-	height: 50px;
-	padding: 1px 6px;
-	font-weight: 600;
-	border-radius: 8px;
-	background-color: white;
-	border: 3px solid rgb(85, 239, 196);
-	cursor: pointer;
-	&:active {
-		background-color: #c3ebe6;
-		position: relative;
+const colorHandler = parameter => {
+	switch (parameter) {
+		case 'green':
+			return `border: 3px solid rgb(85, 239, 196); background-color: rgb(85, 239, 196)`;
+		case 'pink':
+			return `border: 3px solid rgb(250, 177, 160); color: rgb(214, 48, 49); background-color: rgb(250, 177, 160)`;
+		default:
+			return '';
 	}
-`;
+};
 
-const StMediumBtn = styled.button`
-	width: 130px;
-	height: 45px;
-	padding: 1px 6px;
-	font-weight: 300;
-	border-radius: 8px;
-	background-color: ${props => props.backGroundColor || 'rgb(250, 177, 160)'};
-	color: ${props => props.textColor || '#d63031'};
-	border: none;
-	cursor: pointer;
-	&:active {
-		background-color: ${props => props.clkColor || '#ea7070'};
-		position: relative;
+const sizeHandler = parameter => {
+	switch (parameter) {
+		case 'large':
+			return `width: 200px; height: 50px; background-color: white; font-weight: 600;`;
+		case 'medium':
+			return `width: 130px; height: 45px;`;
+		default:
+			// Small
+			return `width: 100px; height: 40px;`;
 	}
-`;
-
-const StSmallBtn = styled.button`
-	border: none;
-	cursor: pointer;
-	border-radius: 8px;
-	background-color: ${props => props.backGroundColor || 'rgb(250, 177, 160)'};
-	color: ${props => props.textColor || '#d63031'};
-	height: 40px;
-	width: 100px;
-	&:active {
-		background-color: ${props => props.clkColor || '#ea7070'};
-		position: relative;
-	}
-`;
+};

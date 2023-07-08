@@ -5,7 +5,7 @@ function Select() {
 	return (
 		<StContainer>
 			<StSelectBox>
-				<StHeader>Select</StHeader>
+				<h1>Select</h1>
 				<StSelect>
 					<CustomOption value="option1">리액트</CustomOption>
 					<CustomOption value="option1">자바</CustomOption>
@@ -23,15 +23,6 @@ const StContainer = styled.div`
 	margin: 10px;
 `;
 
-const StHeader = styled.div`
-	display: block;
-	font-size: 2em;
-	margin-block-start: 0.67em;
-	margin-block-end: 0.67em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
-`;
 const StSelectBox = styled.div`
 	border: 3px solid rgb(221, 221, 221);
 	height: 200px;
