@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import Button from './Components/Button';
-import Input from './Components/Input';
-import Modal from './Components/Modal';
-import Select from './Components/Select';
+import Button from './Components/ButtonSection/Button';
+import Input from './Components/InputSection/Input';
+import Modal from './Components/ModalSection/Modal';
+import OptionVisible from './Components/SelectSection/OptionVisible';
+import Select from './Components/SelectSection/Select';
 import GlobalStyle from './GlobalStyle';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 			<Input />
 			<Modal />
 			<Select />
+			<OptionVisible />
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { StBtn } from './Button';
+import { StBtn } from '../ButtonSection/Button';
 
 function Input() {
 	const [nameInput, setNameInput] = useState('');
