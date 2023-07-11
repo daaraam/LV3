@@ -36,6 +36,7 @@ function Select() {
 				languageList={languageList}
 				handleFirstLanguageClick={handleFirstLanguageClick}
 			/>
+
 			<StSelectBorder>
 				<h1>Select</h1>
 				<StSelectBtnContainer>

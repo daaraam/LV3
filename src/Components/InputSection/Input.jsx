@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { StBtn } from '../ButtonSection/Button';
+import { StBtn, StContainer } from '../ButtonSection/Button';
 
 function Input() {
 	const [nameInput, setNameInput] = useState('');
 	const [priceInput, setPriceInput] = useState('0');
-
-	// const onChangeComma = event => {
-	// 	const { value } = event.target;
-	// 	let str = value.replaceAll(',', '');
-	// 	setMoney(str);
-	// };
-
-	// const priceInputChange = event => {
-	// 	event.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	// 	setPriceInput(event.target.value);
-	// };
 
 	const handleChange = event => {
 		const { name, value } = event.target;
@@ -28,19 +17,13 @@ function Input() {
 		}
 	};
 
-	const unValidInput = nameInput.length === 0 || priceInput.length === 0;
-
 	const handleSubmit = event => {
 		event.preventDefault();
-		if (unValidInput) {
+		if (nameInput.trim() === '' && priceInput === '0') {
 			alert('이름과 가격 모두 입력해주세요.');
-			setNameInput('');
-			setPriceInput('');
+		} else {
+			alert(`{name:${nameInput}, price:${priceInput.replaceAll(',', '')}}`);
 		}
-	};
-
-	const handleClick = () => {
-		alert(`이름:${nameInput}, 가격:${priceInput.replaceAll(',', '')}`);
 	};
 
 	return (
@@ -55,19 +38,13 @@ function Input() {
 					가격
 					<StInput onChange={handleChange} type="text" name="priceInput" value={priceInput} />
 				</div>
-				<StBtn bgColor={'green'} onClick={handleClick}>
-					저장
-				</StBtn>
+				<StBtn bgColor={'green'}>저장</StBtn>
 			</StInputGroup>
 		</StContainer>
 	);
 }
 
 export default Input;
-
-const StContainer = styled.div`
-	margin: 10px;
-`;
 
 const StInput = styled.input`
 	padding: 1px 12px;

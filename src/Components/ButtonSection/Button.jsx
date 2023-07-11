@@ -33,7 +33,7 @@ function Button() {
 
 export default Button;
 
-const StContainer = styled.div`
+export const StContainer = styled.div`
 	margin: 10px;
 `;
 
@@ -53,8 +53,6 @@ export const StBtn = styled.button`
 	&:active {
 		filter: brightness(70%);
 	}
-	/* ${props => colorHandler(props.bgColor)}; 비구조분해할당 밑에는구조분해할당이랍니다*/
-
 	${({ bgColor }) => colorHandler(bgColor)};
 	${({ type }) => sizeHandler(type)};
 `;
